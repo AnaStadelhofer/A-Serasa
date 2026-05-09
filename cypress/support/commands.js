@@ -1,3 +1,4 @@
+
 // Padrão de request
 Cypress.Commands.add("apiRequest", (method, endpoint, body) => {
     const options = {
