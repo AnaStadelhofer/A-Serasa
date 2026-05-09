@@ -1,7 +1,8 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  allowCypressEnv: false,
+  allowCypressEnv: true,
+  responseTimeout: 500,
 
   e2e: {
     baseUrl: 'http://google.com',
