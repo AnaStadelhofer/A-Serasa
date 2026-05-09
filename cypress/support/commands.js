@@ -1,25 +1,43 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Padrão de request
+Cypress.Commands.add("apiRequest", (method, endpoint, body) => {
+    const options = {
+        method,
+        url: `${Cypress.env('apiUrl')}${endpoint}`,
+        failOnStatusCode: false,
+    }
+
+    const methodsWithBody = ['POST', 'PUT', 'PATCH'];
+    if (body && methodsWithBody.includes(method.toUpperCase())) {
+        options.body = body
+        options.headers = { 'Content-Type': 'application/json' }
+    }
+
+    return cy.request(options);
+})
+
+// Posts
+Cypress.Commands.add("getPosts", () => {
+    return cy.apiRequest('GET', 'posts');
+})
+
+Cypress.Commands.add("getPostById", (postId) => {
+    return cy.apiRequest('GET', `posts/${postId}`);
+})
+
+Cypress.Commands.add("createPost", (postData) => {
+    return cy.apiRequest('POST', 'posts', postData);
+})
+
+Cypress.Commands.add("putPost", (postData, id) => {
+    return cy.apiRequest('PUT', `posts/${id}`, postData);
+})
+
+Cypress.Commands.add("patchPost", (postData, id) => {
+    return cy.apiRequest('PATCH', `posts/${id}`, postData);
+})
+
+Cypress.Commands.add("deletePost", (id) => {
+    return cy.apiRequest('DELETE', `posts/${id}`);
+})
+
+// Comments
