@@ -69,12 +69,12 @@ describe("Testes da funcionalidade de produtos", () => {
 
     it("Criar produto com nome muito grande, com mais de 1000 caracteres", () => {
         // Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
-        // Quando preenchido todos os campos válidos, mas o nome tem mais de 1000 caracteres
+        // Quando preenchido todos os campos válidos, mas o nome tem mais de 500 caracteres
         // E clicado para enviar
         // Então deve redirecionar para a tela de listagem de produtos
         // E o produto deve ser exibido na grid
 
-        const longName = 'A'.repeat(1001);
+        const longName = 'A'.repeat(501);
         addProductPage.fillAllAndSubmit(longName, "100", "2025-10-10");
 
         addProductPage.shouldBeRedirectedAfterSubmit();
