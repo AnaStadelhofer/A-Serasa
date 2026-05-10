@@ -7,12 +7,23 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:api": "cypress run --spec 'cypress/e2e/api/**/*.spec.cy.js'",
+    "cy:run:e2e": "cypress run --spec 'cypress/e2e/ui/*.spec.cy.js'",
+    "report:clean": "rimraf cypress/reports",
+    "report:merge": "mochawesome-merge \"cypress/reports/mochawesome*.json\" > cypress/reports/final.json",
+    "report:html": "marge cypress/reports/final.json --reportDir cypress/reports --reportFilename report --inline",
+    "reports:generate": "npm run report:clean && npm run cy:run && npm run report:merge && npm run report:html"
   },
   "dependencies": {
     "cypress": "^15.14.2"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.9.0"
+    "@faker-js/faker": "^9.9.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.1.3"
   }
 }
