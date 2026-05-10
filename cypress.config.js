@@ -5,7 +5,7 @@ module.exports = defineConfig({
   responseTimeout: 500,
 
   e2e: {
-    baseUrl: 'http://google.com',
+    baseUrl: 'https://commitquality.com/',
     specPattern: 'cypress/e2e/**/*.spec.cy.{js,ts}',
     supportFile: 'cypress/support/e2e.js',
     env: {
