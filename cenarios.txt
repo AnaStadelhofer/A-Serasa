@@ -1,0 +1,69 @@
+
+Adicionar produtos:
+
+1. Criar produto com sucesso
+        Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
+        Quando preenchido todos os campos com dados válidos
+        E clicado para enviar
+        Então deve redirecionar para a tela de listagem de produtos 
+        E o produto deve ser exibido na grid
+
+2. Criar produto onde o preço tem mais de 10 dígitos
+        Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
+        Quando preenchido todos campos válidos, mas o preço tem mais de 10 dígitos
+        E clicado para enviar
+        Então deve aparecer uma mensagem de erro informando que o preço deve conter no máximo 10 dígitos
+        E deve aparecer uma mensagem de erro informando que os erros devem ser resolvidos antes de enviar
+
+3. Criar produto e cancelar a criação
+        Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
+        Quando preenchido todos os campos com dados válidos
+        E clicado para cancelar
+        Então deve redirecionar para a tela de listagem de produtos 
+        E o produto deve não ser exibido na grid
+
+4. Criar produto produto com todos campos vazios
+        Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
+        Quando clicado para enviar sem preencher nenhum campo
+        Então deve aparecer uma mensagem de erro informando que os erros devem ser resolvidos antes de enviar
+        E o campo nome deve apresentar uma mensagem de erro informando que o nome deve conter no mínimo 2 caracteres
+        E o campo preço deve apresentar uma mensagem de erro informando que o preço deve conter no máximo 10 dígitos
+        E o campo data deve apresentar uma mensagem de erro informando que a data não pode ser vazia
+
+5. Criar produto com nome muito grande, com mais de 1000 caracteres
+        Dado que o usuário acesse a tela de criar produto do site jsonplaceholder.typicode.com
+        Quando preenchido todos os campos válidos, mas o nome tem mais de 500 caracteres
+        E clicado para enviar
+        Então deve redirecionar para a tela de listagem de produtos
+        E o produto deve ser exibido na grid
+
+
+Lista de Produtos:
+
+1. Filtrar por um produto que não existe
+        Dado que o usuário está na página de produtos
+        Quando ele filtra por um produto que não existe
+        Então ele deve ver uma mensagem de que nenhum produto foi encontrado
+        E a tabela de produtos não deve aparecer
+
+2. Filtrar por um produto existente
+        Dado que o usuário está na página de produtos
+        Quando ele filtra por um produto existente
+        Então ele deve ver a tabela de produtos
+        E a primeira linha da tabela deve conter as informações do produto filtrado 
+
+3. Filtrar por um produto e resetar o filtro
+        Dado que o usuário está na página de produtos
+        Quando ele filtra por um produto existente
+        E ele reseta o filtro
+        Então ele deve ver a tabela de produtos com todos os produtos
+
+4. Clicar em adicionar produto pelo botão abaixo da tabela
+        Dado que o usuário está na página de produtos
+        Quando ele clicar em adicionar produto
+        Então ele deve ser redirecionado para a página de adicionar produto
+
+5. Clicar em mostrar mais produtos
+        Dado que o usuário está na página de produtos
+        Quando ele clicar em mostrar mais produtos
+        Então ele deve ver mais produtos na tabela
