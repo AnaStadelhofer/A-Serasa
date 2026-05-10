@@ -42,6 +42,10 @@ class addProductPage {
         return cy.get('[data-testid="all-fields-validation"]');
     }
 
+    get title() {
+        return cy.get('h1');
+    }
+
     visit() {
         cy.visit("/add-product");
     }
@@ -86,6 +90,10 @@ class addProductPage {
 
     validateErrorValidation(message) {
         return this.errorValidation.should('be.visible').and('have.text', message);
+    }
+
+    validateTitle(message) {
+        return this.title.should('be.visible').and('have.text', message);
     }
 
     // Metodos completos
