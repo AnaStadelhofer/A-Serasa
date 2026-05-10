@@ -46,7 +46,7 @@ describe("Testes da funcionalidade de produtos", () => {
         productPage.resetFilter();
     })
 
-    it.only("Clicar em adicionar produto pelo botão abaixo da tabela", () => {
+    it("Clicar em adicionar produto pelo botão abaixo da tabela", () => {
         // Dado que o usuário está na página de produtos
         // Quando ele clicar em adicionar produto
         // Então ele deve ser redirecionado para a página de adicionar produto
